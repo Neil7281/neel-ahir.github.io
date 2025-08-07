@@ -40,7 +40,16 @@
     <h2>Projects & Thesis</h2>
 
     <h3>Nonlinear Model Predictive Control of a Quadrotor</h3>
-    <p>Developed 12-state nonlinear model with PD and NMPC controllers in MATLAB/CasADi, achieving 92.6% ITAE improvement. Reinforcement learning integration in progress.</p>
+    <!-- <p>Developed 12-state nonlinear model with PD and NMPC controllers in MATLAB/CasADi, achieving 92.6% ITAE improvement. Reinforcement learning integration in progress.</p> -->
+    <u1> 
+      <li>Built a 12-state nonlinear quadrotor model using MATLAB and Simulink, including motion and actuator constraints.</li>
+      <li>Designed a cascaded-loop PD controller, with gains optimized via gradient-based optimization for accurate trajectory tracking.</li>
+      <li>Developed an NMPC controller using CasADi, incorporating position, velocity, and orientation angle errors in the cost function.</li>
+      <li>Performed system identification through model fitting and simulation-based parameter tuning.</li>
+      <li>Achieved 86.7% ISE and 92.6% ITAE improvement with NMPC over PD, validated in MATLAB.</li>
+      <li>Performed experimental flight tests on DJI Phantom 4 Pro V2.0 across 3 trajectories to validate controller performance.</li>
+      <li>Currently integrating Reinforcement Learning for adaptive, learning-based MPC.</li>
+    </u1>
     <div class="video-sequence">
       <video id="video1" muted>
         <source src="mpc_circle.mp4" type="video/mp4">
