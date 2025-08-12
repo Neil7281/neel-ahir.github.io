@@ -60,11 +60,11 @@ footer {
 }
 
 .profile-pic {
-  width: 102px;
-  height: 102px;
+  width: 118px;
+  height: 118px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 1.5px solid #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
   background: #eee;
 }
