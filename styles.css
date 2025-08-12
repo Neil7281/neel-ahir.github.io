@@ -35,6 +35,19 @@ section {
   margin: auto;
 }
 
+.education-entry {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.education-entry div:first-child {
+  font-size: 1.08em;
+  font-weight: bold;
+}
+.education-entry div:last-child {
+  margin-left: 8px;
+  color: #333;
+}
+
 h2 {
   color: #004080;
 }
