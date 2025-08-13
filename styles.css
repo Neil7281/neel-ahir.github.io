@@ -1,3 +1,49 @@
+.contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  font-size: 1.05em;
+  margin: 18px 0 0 0;
+}
+.contact-line span {
+  display: flex;
+  align-items: center;
+}
+.contact-line a {
+  color: #004080;
+  text-decoration: none;
+  font-weight: 500;
+}
+.contact-line a:hover {
+  text-decoration: underline;
+}
+.education-entry {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.education-entry div:first-child {
+  font-size: 1.08em;
+  font-weight: bold;
+}
+.education-entry div:last-child {
+  margin-left: 8px;
+  color: #333;
+}
+
+.award-entry {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.award-entry div:first-child {
+  font-size: 1.08em;
+  font-weight: bold;
+}
+.award-entry div:last-child {
+  margin-left: 8px;
+  color: #333;
+}
 
 body {
   font-family: Arial, sans-serif;
