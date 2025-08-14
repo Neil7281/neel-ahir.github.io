@@ -68,17 +68,7 @@
       <li>Currently integrating Reinforcement Learning for adaptive, learning-based MPC.</li>
     </u1>
     <div class="custom-video-carousel">
-      <div class="carousel-track">
-        <video id="video-prev" class="carousel-video dimmed" muted>
-          <source src="mpc_circle.mp4" type="video/mp4">
-        </video>
-        <video id="video-current" class="carousel-video highlighted" controls autoplay muted>
-          <source src="mpc_helical.mp4" type="video/mp4">
-        </video>
-        <video id="video-next" class="carousel-video dimmed" muted>
-          <source src="mpc_infinity.mp4" type="video/mp4">
-        </video>
-      </div>
+      <div class="carousel-track" id="carousel-track"></div>
       <div class="carousel-controls">
         <button id="carousel-prev">&#8592;</button>
         <button id="carousel-next">&#8594;</button>
@@ -90,16 +80,34 @@
         'mpc_helical.mp4',
         'mpc_infinity.mp4'
       ];
-      let currentIdx = 1;
+      let currentIdx = 0;
+      function createVideo(src, className, controls = false, autoplay = false) {
+        const video = document.createElement('video');
+        video.className = 'carousel-video ' + className;
+        video.muted = true;
+        video.src = src;
+        video.setAttribute('type', 'video/mp4');
+        if (controls) video.controls = true;
+        if (autoplay) video.autoplay = true;
+        video.style.display = 'block';
+        return video;
+      }
       function updateCarousel() {
+        const track = document.getElementById('carousel-track');
+        track.innerHTML = '';
         const prevIdx = (currentIdx - 1 + videoSources.length) % videoSources.length;
         const nextIdx = (currentIdx + 1) % videoSources.length;
-        document.getElementById('video-prev').src = videoSources[prevIdx];
-        document.getElementById('video-prev').load();
-        document.getElementById('video-current').src = videoSources[currentIdx];
-        document.getElementById('video-current').load();
-        document.getElementById('video-next').src = videoSources[nextIdx];
-        document.getElementById('video-next').load();
+        // Previous video (dimmed)
+        track.appendChild(createVideo(videoSources[prevIdx], 'dimmed'));
+        // Current video (highlighted)
+        const currentVideo = createVideo(videoSources[currentIdx], 'highlighted', true, true);
+        currentVideo.addEventListener('ended', function() {
+          currentIdx = (currentIdx + 1) % videoSources.length;
+          updateCarousel();
+        });
+        track.appendChild(currentVideo);
+        // Next video (dimmed)
+        track.appendChild(createVideo(videoSources[nextIdx], 'dimmed'));
       }
       document.getElementById('carousel-prev').onclick = function() {
         currentIdx = (currentIdx - 1 + videoSources.length) % videoSources.length;
@@ -109,10 +117,6 @@
         currentIdx = (currentIdx + 1) % videoSources.length;
         updateCarousel();
       };
-      document.getElementById('video-current').addEventListener('ended', function() {
-        currentIdx = (currentIdx + 1) % videoSources.length;
-        updateCarousel();
-      });
       updateCarousel();
     </script>
 
