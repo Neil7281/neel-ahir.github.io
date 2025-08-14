@@ -67,32 +67,44 @@
       <li>Performed experimental flight tests on DJI Phantom 4 Pro V2.0 across 3 trajectories to validate controller performance.</li>
       <li>Currently integrating Reinforcement Learning for adaptive, learning-based MPC.</li>
     </u1>
-    <div class="video-sequence">
-      <video id="video1" muted>
+    <div class="video-slider">
+      <video id="video1" class="slider-video active" muted>
         <source src="mpc_circle.mp4" type="video/mp4">
       </video>
-      <video id="video2" muted>
+      <video id="video2" class="slider-video" muted>
         <source src="mpc_helical.mp4" type="video/mp4">
       </video>
-      <video id="video3" muted>
+      <video id="video3" class="slider-video" muted>
         <source src="mpc_infinity.mp4" type="video/mp4">
       </video>
     </div>
     <script>
-      const videos = [
+      const sliderVideos = [
         document.getElementById('video1'),
         document.getElementById('video2'),
         document.getElementById('video3')
       ];
-      let current = 0;
-      videos[current].play();
-      for (let i = 0; i < videos.length; i++) {
-        videos[i].addEventListener('ended', () => {
-          current = (current + 1) % videos.length;
-          videos.forEach(v => v.pause());
-          videos[current].play();
+      let currentSlider = 0;
+      function showVideo(idx, direction = 'left') {
+        sliderVideos.forEach((v, i) => {
+          v.classList.remove('active', 'slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+          v.pause();
+          v.currentTime = 0;
         });
+        sliderVideos[idx].classList.add('active', direction === 'left' ? 'slide-in-left' : 'slide-in-right');
+        sliderVideos[idx].play();
       }
+      showVideo(currentSlider);
+      sliderVideos.forEach((video, i) => {
+        video.addEventListener('ended', () => {
+          const prev = currentSlider;
+          currentSlider = (currentSlider + 1) % sliderVideos.length;
+          sliderVideos[prev].classList.add('slide-out-left');
+          setTimeout(() => {
+            showVideo(currentSlider, 'right');
+          }, 500);
+        });
+      });
     </script>
 
     <h3>Autonomous Rover Design</h3>
