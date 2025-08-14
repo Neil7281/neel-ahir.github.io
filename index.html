@@ -67,35 +67,54 @@
       <li>Performed experimental flight tests on DJI Phantom 4 Pro V2.0 across 3 trajectories to validate controller performance.</li>
       <li>Currently integrating Reinforcement Learning for adaptive, learning-based MPC.</li>
     </u1>
-    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 700px; margin: 0 auto 24px auto;">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <video class="d-block w-100" controls autoplay muted>
-            <source src="mpc_circle.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="carousel-item">
-          <video class="d-block w-100" controls autoplay muted>
-            <source src="mpc_helical.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="carousel-item">
-          <video class="d-block w-100" controls autoplay muted>
-            <source src="mpc_infinity.mp4" type="video/mp4">
-          </video>
-        </div>
+    <div class="custom-video-carousel">
+      <div class="carousel-track">
+        <video id="video-prev" class="carousel-video dimmed" muted>
+          <source src="mpc_circle.mp4" type="video/mp4">
+        </video>
+        <video id="video-current" class="carousel-video highlighted" controls autoplay muted>
+          <source src="mpc_helical.mp4" type="video/mp4">
+        </video>
+        <video id="video-next" class="carousel-video dimmed" muted>
+          <source src="mpc_infinity.mp4" type="video/mp4">
+        </video>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <div class="carousel-controls">
+        <button id="carousel-prev">&#8592;</button>
+        <button id="carousel-next">&#8594;</button>
+      </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const videoSources = [
+        'mpc_circle.mp4',
+        'mpc_helical.mp4',
+        'mpc_infinity.mp4'
+      ];
+      let currentIdx = 1;
+      function updateCarousel() {
+        const prevIdx = (currentIdx - 1 + videoSources.length) % videoSources.length;
+        const nextIdx = (currentIdx + 1) % videoSources.length;
+        document.getElementById('video-prev').src = videoSources[prevIdx];
+        document.getElementById('video-prev').load();
+        document.getElementById('video-current').src = videoSources[currentIdx];
+        document.getElementById('video-current').load();
+        document.getElementById('video-next').src = videoSources[nextIdx];
+        document.getElementById('video-next').load();
+      }
+      document.getElementById('carousel-prev').onclick = function() {
+        currentIdx = (currentIdx - 1 + videoSources.length) % videoSources.length;
+        updateCarousel();
+      };
+      document.getElementById('carousel-next').onclick = function() {
+        currentIdx = (currentIdx + 1) % videoSources.length;
+        updateCarousel();
+      };
+      document.getElementById('video-current').addEventListener('ended', function() {
+        currentIdx = (currentIdx + 1) % videoSources.length;
+        updateCarousel();
+      });
+      updateCarousel();
+    </script>
 
     <h3>Autonomous Rover Design</h3>
     <!-- <p>Implemented GPS-based waypoint tracking using ROS 2, Pixhawk, and the Pure Pursuit algorithm.used Q-Groundcontrol for mission monitoring and telementory</p> -->
