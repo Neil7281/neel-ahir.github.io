@@ -234,3 +234,13 @@ footer {
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
   background: #eee;
 }
+.skills-category {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.skills-category strong {
+  color: #004080;
+  font-weight: bold;
+}

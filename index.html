@@ -27,8 +27,9 @@
     <nav>
       <a href="#summary">Summary</a>
       <a href="#education">Education</a>
-      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#awards">Awards</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
@@ -37,7 +38,7 @@
 
   <section id="summary">
     <h2>Summary</h2>
-    <p>Robotics enthusiast with a strong foundation in control systems, machine learning, and autonomous systems. Experienced in developing and implementing advanced control algorithms for robotics applications, including nonlinear model predictive control (NMPC) and reinforcement learning. Proven ability to design and validate complex systems through simulation and experimental testing.</p>
+    <p>Robotics Engineer specializing in motion planning and controls, robot learning for autonomous systems, with expertise in C++, Python, ROS2, NMPC, and trajectory optimization in translating complex problems into efficient solutions for real-world deployment.</p>
   </section>
 
 
@@ -45,38 +46,71 @@
   <section id="education">
       <h2>Education</h2>
       <div class="education-entry">
-        <div><strong>California State University, Sacramento</strong> (2023–2025)</div>
+        <div><strong>California State University, Sacramento</strong> (Aug 2023 – Dec 2025)</div>
         <div>M.S. Mechanical Engineering — GPA: 3.8/4</div>
+        <div style="margin-left: 8px; color: #333; font-size: 0.95em; margin-top: 6px;">
+          <strong>Awards:</strong>
+          <ul style="margin: 4px 0; padding-left: 20px;">
+            <li>Best Commercial Potential Award - Autonomous Robot Build Day at AGI HOUSE</li>
+            <li>Special Project Award - Physical AI Hackathon 2026</li>
+            <li>Provost's Award (1st Place) – Sacramento State Spring Symposium, 2025</li>
+            <li>Honorable Mention (3rd Place) – The 39th Annual CSU Student Research Competition, hosted by Cal Poly Humboldt, 2025</li>
+          </ul>
+        </div>
       </div>
       <div class="education-entry">
-        <div><strong>Gujarat Technological University</strong> (2019–2023)</div>
+        <div><strong>Gujarat Technological University</strong> (July 2019 – May 2023)</div>
         <div>B.E. Mechanical Engineering — GPA: 3.1/4</div>
       </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-category">
+      <strong>Programming Languages:</strong> C++, Python, MATLAB/Simulink
+    </div>
+    <div class="skills-category">
+      <strong>Frameworks/Tools:</strong> ROS2, Gazebo, Isaac Sim/Lab, CasADi, PyTorch, Git/GitHub
+    </div>
+    <div class="skills-category">
+      <strong>Simulation & CAD:</strong> SolidWorks, CATIA, Ansys, FEA
+    </div>
+    <div class="skills-category">
+      <strong>Hardware Platforms:</strong> Jetson AGX Thor, Jetson Orin Nano, Pixhawk (PX4), IMU, Encoders, GPS, Linux, HITL/SITL, SO-101 arm
+    </div>
   </section>
 
   <section id="projects">
     <h2>Projects & Thesis</h2>
 
-    <h3>LeSandwitch</h3>
-    <!-- <p>Developed 12-state nonlinear model with PD and NMPC controllers in MATLAB/CasADi, achieving 92.6% ITAE improvement. Reinforcement learning integration in progress.</p> -->
-    <u1> 
+    <h3>ServingU – Physical AI Hackathon 2026</h3>
+    <p>31st Jan – 01st Feb 2026</p>
+    <ul> 
+      <li>Utilized the LeRobot SO-101 arm, Jetson Orin Nano, mobile base as hardware, and a custom environment for a precise pouring task.</li>
+      <li>Divided the whole process of pouring into 3 subtasks, collected data for each subtask separately, and trained models (ACT, Diffusion) for each subtask on Brev.</li>
+      <li>Evaluated and benchmarked the models and went with the best-performing model (ACT).</li>
+      <li>Built custom script to automatically run inference for each model sequentially (with an option to manually switch), ensuring the coffee is poured into the serving cup precisely with over 90% success rate.</li>
+    </ul>
+
+    <h3>LeSandwitch – Embodied AI Hackathon by Seeed Studio, NVIDIA Robotics, Hugging Face</h3>
+    <p>Sep 2025 – Oct 2025</p>
+    <ul> 
       <li>Built a mobile manipulator with dual LeRobot SO-101 arms and a modular kitchen setup for sandwich preparation and delivery</li>
       <li>Teleop data collection via leader–follower control; expanded datasets with simulation in IsaacSim/IsaacLab</li>
       <li>Trained GR00T-N1.5 and ACT policies on cloud GPUs using Runpod, Vast.ai, Brev, and PhosphoBot</li>
       <li>Deployed real-time inference on NVIDIA Jetson AGX Thor (prototyped on Jetson Orin Nano Super).</li>
-    </u1>
+    </ul>
 
-    <h3>Nonlinear Model Predictive Control of a Quadrotor</h3>
-    <!-- <p>Developed 12-state nonlinear model with PD and NMPC controllers in MATLAB/CasADi, achieving 92.6% ITAE improvement. Reinforcement learning integration in progress.</p> -->
-    <u1> 
-      <li>Built a 12-state nonlinear quadrotor model using MATLAB and Simulink, including motion and actuator constraints.</li>
-      <li>Designed a cascaded-loop PD controller, with gains optimized via gradient-based optimization for accurate trajectory tracking.</li>
-      <li>Developed an NMPC controller using CasADi, incorporating position, velocity, and orientation angle errors in the cost function.</li>
-      <li>Performed system identification through model fitting and simulation-based parameter tuning.</li>
+    <h3>Thesis: Nonlinear Model Predictive Control of a Quadrotor</h3>
+    <p>Jan 2024 - Present</p>
+    <ul> 
+      <li>Derived a 6-DOF quadrotor plant model in MATLAB/Simulink, incorporating non-linear multi-body dynamics, aerodynamic effects, and physical actuator saturation constraints.</li>
+      <li>Developed a Minimum Snap trajectory generator for the vertical (Z) axis to ensure smooth, differentiable motion profiles, optimizing for reduced mechanical stress and motor jitter during high-dynamic maneuvers.</li>
+      <li>Architected a Nonlinear Model Predictive Controller (NMPC) using the CasADi optimization framework; engineered a multi-objective cost function to minimize pose and velocity errors while respecting state-space constraints.</li>
       <li>Achieved 86.7% ISE and 92.6% ITAE improvement with NMPC over PD, validated in MATLAB.</li>
       <li>Performed experimental flight tests on DJI Phantom 4 Pro V2.0 across 3 trajectories to validate controller performance.</li>
       <li>Currently integrating Reinforcement Learning for adaptive, learning-based MPC.</li>
-    </u1>
+    </ul>
     <div class="custom-video-carousel">
       <div class="carousel-track" id="carousel-track"></div>
       <div class="carousel-controls">
@@ -131,63 +165,74 @@
     </script>
 
     <h3>Autonomous Rover Design</h3>
-    <!-- <p>Implemented GPS-based waypoint tracking using ROS 2, Pixhawk, and the Pure Pursuit algorithm.used Q-Groundcontrol for mission monitoring and telementory</p> -->
-    <u1>
-      <li>Developed an autonomous rover using C++, ROS 2, and Pixhawk for GPS-based waypoint navigation.</li>
-      <li>Implemented the Pure Pursuit algorithm to achieve smooth and accurate trajectory tracking.</li>
-      <li>Used QGroundControl for mission planning, live telemetry, and real-time control.</li>
-      <li>Enabled user-defined waypoint selection with automatic path planning, tested in simulation.</li>
-    </u1>
-
-
+    <p>Sep 2024 – Dec 2024</p>
+    <ul>
+      <li>Developed a custom Pure Pursuit controller in C++ for high-accuracy trajectory tracking, implementing a velocity-indexed look-ahead distance to optimize stability and minimize cross-track error.</li>
+      <li>Architected a ROS 2 navigation stack using Action Servers for waypoint sequencing and TF2 for real-time coordinate frame transformations between map, odom, and base_link.</li>
+      <li>Engineered an Extended Kalman Filter (EKF) to fuse asynchronous data from dual IMUs and wheel encoders at 30 Hz, successfully reducing cumulative yaw drift by 55%.</li>
+      <li>Integrated high-level planning nodes with Pixhawk flight controllers via MAVROS, ensuring low-latency communication and robust GPS-based waypoint navigation in outdoor environments.</li>
+      <li>Validated motion algorithms through Gazebo simulations and Hardware-in-the-Loop (HIL) testing, refining PID gains to ensure smooth acceleration profiles across varying terrains.</li>
+    </ul>
 
     <h3>LQR-Based Control of Inverted Pendulum</h3>
-    <!-- <p>Designed and validated an LQR controller for stabilization using MATLAB/Simulink.</p> -->
-    <u1>
-      <li> Modeled and linearized a nonlinear inverted pendulum system and analyzed system states, controllability, and observability.</li>
+    <ul>
+      <li>Modeled and linearized a nonlinear inverted pendulum system and analyzed system states, controllability, and observability.</li>
       <li>Designed and simulated an LQR controller with a state estimator in MATLAB/Simulink to validate system stability.</li>
-    </u1>  
-     <h3>Multipurpose Safety Frame for Construction Workers </h3>
-    <!-- <p>Designed and validated an LQR controller for stabilization using MATLAB/Simulink.</p> -->
-    <u1>
-      <li> Led a team to design a multipurpose safety frame for construction workers to address on-site hazards.</li>
+    </ul>  
+     
+    <h3>Multipurpose Safety Frame for Construction Workers</h3>
+    <ul>
+      <li>Led a team to design a multipurpose safety frame for construction workers to address on-site hazards.</li>
       <li>Modeled in SolidWorks and validated structural strength through Ansys simulations.</li>
       <li>Built a stainless-steel prototype with optimized cost ($120) and weight (~7 kg) for practical use.</li>
       <li><a href="report safety frame for human.pdf" target="_blank">Project Report (PDF)</a></li>
-    </u1>  
+    </ul>  
   </section>
 
   <section id="experience">
     <h2>Experience</h2>
-    <h3>Robotics Software Engineer – Planning and Control</h3>
-    <p>Competitive Robotics Club, CSU Sacramento (Dec 2024 – Present)</p>
+    <h3>Robotics Engineer Intern</h3>
+    <p>Open Droid, San Francisco, CA (Feb 2026 – Present)</p>
     <ul>
-      <li>Developed motion planning and PID control in C++ for autonomous rover navigation.</li>
-      <li>Implemented real-time sensor fusion with dual IMUs for improved localization.</li>
-      <li>Handled system-level debugging during field testing for hardware-software integration.</li>
-      <li>Designed simulation-based behavior tests and managed codebase via Git/GitHub.</li>
+      <li><strong>Autonomous Navigation:</strong> Developed and fine-tuned indoor navigation stacks for the R2D3 robot platform using ROS2, focusing on SLAM, costmap inflation, and precise path planning in dynamic environments.</li>
+      <li><strong>LLM Orchestration:</strong> Integrated Gemini API to serve as the robot's "reasoning engine," enabling the agent to interpret complex environmental context and autonomously determine navigation goals.</li>
+      <li><strong>System Integration:</strong> Engineered a communication bridge between high-level Generative AI orchestration and low-level ROS2 controllers, translating natural language reasoning into actionable spatial coordinates.</li>
+      <li><strong>Optimization:</strong> Improved R2D3's decision-making latency by optimizing API call structures and localizing reasoning processes for real-time indoor deployment.</li>
+    </ul>
+
+    <h3>Robotics Software Engineer – Planning and Control</h3>
+    <p>Competitive Robotics Club – Firefighter Project, CSU Sacramento (Dec 2024 – Dec 2025)</p>
+    <ul>
+      <li>Engineered a multi-tier navigation stack in C++, implementing the A* search algorithm for global path planning and integrating it with local PID controllers for precise obstacle avoidance and trajectory execution.</li>
+      <li>Optimized path-finding efficiency by implementing custom heuristic functions within the A* framework, reducing computational overhead and ensuring real-time re-planning capabilities in dynamic environments.</li>
+      <li>Developed a robust state estimation pipeline by fusing dual IMU data and odometry using a sensor fusion filter, significantly improving localization accuracy during high-acceleration maneuvers.</li>
+      <li>Designed and implemented discrete-time PID controllers for motor velocity and heading control, tuning gains to achieve minimal overshoot and settling time.</li>
+      <li>Maintained a professional CI/CD workflow using Git/GitHub for collaborative development; performed rigorous unit testing and Gazebo-based regression tests to validate behavior logic before hardware deployment.</li>
     </ul>
 
     <h3>Graduate Teaching Assistant</h3>
-    <p>CSU Sacramento (Aug 2024 – Jan 2025) – Advanced Mathematics courses.</p>
-
-    <h3>Robotics Software Engineer - Controls</h3>
-    <p>Larsen & Toubro Defense (Jan 2023 – May 2023) </p>
+    <p>California State University, Sacramento (Aug 2024 – Jan 2025)</p>
     <ul>
-      <li>Designed and tuned multi-axis PID and feedforward controllers for robotic actuators to mimic electric drivetrain response</li>
-      <li>Simulated and validated joint dynamics in Simulink to analyze torque-dependent actuator behavior.</li>
-      <li>Integrated IMU and encoder data for sensor fusion, enhancing control stability under load variation..</li>
-      <li>Improved feedback loop performance by refining controller parameters in dynamic conditions.</li>
-      <li>Automated inspection report processing with a tolerance-filling system, cutting manual work time by over 40%.</li>
+      <li>Assisted with grading and tutoring for Advanced Mathematics courses (ME201, ME202).</li>
+    </ul>
+
+    <h3>Robotics Software Engineer – Controls Intern</h3>
+    <p>Larsen & Toubro Defense (L&T), Surat, India (Jan 2023 – May 2023)</p>
+    <ul>
+      <li>Developed high-performance control laws by designing and tuning multi-axis PID and Feedforward controllers to emulate specific electric drivetrain responses for heavy-duty robotic actuators.</li>
+      <li>Modeled complex plant dynamics in MATLAB/Simulink to analyze torque-dependent behaviors, ensuring stable actuator performance across varying load conditions and duty cycles.</li>
+      <li>Characterized system response by performing frequency-domain analysis to identify resonance modes, utilizing this data to optimize controller gains for high-speed precision movement.</li>
+      <li>Bridged simulation and hardware by validating joint-level dynamics against real-world telemetry, achieving a high degree of correlation between Simulink predictive models and physical hardware output.</li>
+      <li>Engineered a Python-based automation tool for inspection report processing and tolerance filling, streamlining the quality assurance workflow and reducing manual overhead by 40%.</li>
     </ul>
 
     <h3>Design and Manufacturing Intern</h3>
     <p>Rockman Advanced Composites (June 2022 – July 2022) – Composite part manufacturing.</p>
-    <u1>
+    <ul>
       <li>Designed molds and patterns for complex composite parts using CATIA, enhancing production readiness.</li>
       <li>Assisted in composite manufacturing processes including lamination, curing, and trimming to ensure component quality.</li>
       <li>Operated 5-axis CNC machinery for precision machining of advanced composite components.</li>
-    </u1> 
+    </ul> 
   </section>
 
   <section id="awards">
@@ -205,12 +250,13 @@
   <section id="publications">
       <h2>Publications</h2>
       <div class="award-entry">
-        <div> Garima Bhandari, <strong>Neelkumar Ahir</strong>, Atefeh Mohammadpour. "Enhancing Drone Trajectory Tracking in Construction via Proportional–
-              Derivative Control Optimization" submitted to the 62nd ASC International Conference, 2026, Accepted</div>
+        <div>Garima Bhandari, <strong>Neelkumar Ahir</strong>, Atefeh Mohammadpour. "Enhancing Drone Trajectory Tracking in Construction via Proportional–Derivative Control Optimization" submitted to the 62nd ASC International Conference, 2026, Accepted</div>
       </div>
       <div class="award-entry">
-        <div><strong>Neelkumar Ahir,</strong> Jesus Betancourt and Garima Bhandari. "Non-Linear Model Predictive Control of Quadrotor for
-                    Trajectory Tracking” under review for IEEE Robotics and Automation Letters.</div>
+        <div><strong>Neelkumar Ahir,</strong> Jesus Betancourt and Garima Bhandari. "Non-Linear Model Predictive Control of Quadrotor for Trajectory Tracking" under review for IEEE IROS.</div>
+      </div>
+      <div class="award-entry">
+        <div><strong>Neelkumar Ahir,</strong> Jyotindra Narayan and Garima Bhandari. "Constraint Aware Nonlinear Model Predictive Control for Quadrotor Trajectory Tracking: Comparison with Optimally Tuned PD Control" under review for IEEE CoDIT.</div>
       </div>
   </section>
 
@@ -221,9 +267,13 @@
         <span>|</span>
         <span><strong>Phone:</strong> 916-957-7101</span>
         <span>|</span>
+        <span><strong>Location:</strong> Alameda, CA</span>
+        <span>|</span>
         <span><a href="https://github.com/Neil7281" target="_blank">GitHub</a></span>
         <span>|</span>
         <span><a href="https://www.linkedin.com/in/neel-ahir" target="_blank">LinkedIn</a></span>
+        <span>|</span>
+        <span><a href="https://huggingface.co/" target="_blank">Hugging Face</a></span>
         <span>|</span>
         <span><a href="resume.pdf" download>Resume (PDF)</a></span>
       </div>
